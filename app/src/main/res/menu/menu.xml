@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- "Mark Favorite", should appear as action button if possible -->
+    <item
+            android:id="@+id/export_button"
+            android:icon="@drawable/ic_import_export_black_24dp"
+            android:title="export_button"
+            app:showAsAction="ifRoom"/>
+    <item
+            android:id="@+id/meeting_stats_button"
+            android:icon="@drawable/ic_contacts_black_48dp"
+            android:title="meeting_stats_button"
+            app:showAsAction="ifRoom"/>
+
+</menu>
