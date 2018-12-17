@@ -1,4 +1,4 @@
-package com.example.lugal.meetingmanagerjava.features.visitors.views.visitorinfoscreen
+package com.example.lugal.meetingmanagerjava.features.visitors.presentation.visitorinfoscreen
 
 import android.content.Intent
 import com.example.lugal.meetingmanagerjava.entities.VisitorEntity

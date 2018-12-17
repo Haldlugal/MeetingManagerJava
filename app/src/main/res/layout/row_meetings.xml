@@ -1,69 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
-                                    android:layout_height="wrap_content"
-                                    xmlns:android="http://schemas.android.com/apk/res/android"
-                                    android:layout_width="match_parent"
-                                    android:layout_margin="10dp"
->
+<android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        style="@style/rowCard">
 
-    <android.support.constraint.ConstraintLayout
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingBottom="10dp"
-    >
-
+            style="@style/meetingsCardLayout">
 
         <ImageView
-                android:id="@+id/ivMovie"
+                android:id="@+id/meetingImage"
+                style="@style/meetingImage"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                app:srcCompat="@mipmap/ic_launcher"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="16dp"
-                android:layout_marginLeft="16dp"
-                app:layout_constraintLeft_toLeftOf="parent" />
-
-        <TextView
-                android:id="@+id/tvTitle"
-                android:layout_width="0dp"
+                android:contentDescription="@string/imageDescriptionText"/>
+        <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                app:layout_constraintLeft_toRightOf="@+id/ivMovie"
-                android:layout_marginLeft="8dp"
-                app:layout_constraintTop_toTopOf="@+id/ivMovie"
-                android:layout_marginTop="0dp"
-                android:layout_marginRight="8dp"
-                app:layout_constraintRight_toRightOf="parent" />
+                android:orientation="vertical">
+            <TextView
+                    android:id="@+id/meetingTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/meetingTitle"/>
 
-        <TextView
-                android:id="@+id/tvReleaseDate"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="TextView"
-                android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/tvTitle"
-                android:layout_marginLeft="0dp"
-                app:layout_constraintLeft_toLeftOf="@+id/tvTitle"
-                android:layout_marginRight="8dp"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintHorizontal_bias="0.0" />
+            <TextView
+                    android:id="@+id/meetingType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/meetingInfo"/>
 
-        <TextView
-                android:id="@+id/tvOverView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="TextView"
-                android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/tvReleaseDate"
-                android:layout_marginLeft="0dp"
-                app:layout_constraintLeft_toLeftOf="@+id/tvReleaseDate"
-                android:layout_marginRight="8dp"
-                app:layout_constraintRight_toRightOf="parent"
-                android:layout_marginBottom="20dp"
-        />
-    </android.support.constraint.ConstraintLayout>
-
-
+            <TextView
+                    android:id="@+id/meetingPlace"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/meetingInfo"/>
+        </LinearLayout>
+    </LinearLayout>
 </android.support.v7.widget.CardView>

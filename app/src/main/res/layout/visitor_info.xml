@@ -1,60 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" android:orientation="vertical">
-    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                  android:orientation="horizontal">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        style="@style/visitorInfoLayout">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
         <TextView
-            android:id="@+id/firstName"
-            android:text="TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+                android:id="@+id/firstName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/visitorInfoName"/>
         <TextView
-            android:id="@+id/patronymic"
-            android:text="TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+                android:id="@+id/patronymic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/visitorInfoName"/>
         <TextView
-            android:id="@+id/secondName"
-            android:text="TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+                android:id="@+id/secondName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/visitorInfoName"/>
     </LinearLayout>
     <TextView
             android:id="@+id/companyLabel"
-            android:text="Компания"
+            android:text="@string/vi_company"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"/>
     <TextView
             android:id="@+id/company"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"/>
     <TextView
             android:id="@+id/cityLabel"
-            android:text="Город"
+            android:text="@string/vi_city"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"/>
     <TextView
             android:id="@+id/city"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"/>
     <TextView
             android:id="@+id/phoneLabel"
-            android:text="Телефон"
+            android:text="@string/vi_phone"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"/>
     <TextView
             android:id="@+id/phone"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"/>
     <TextView
             android:id="@+id/additionalLabel"
-            android:text="Дополнительная информация"
+            android:text="@string/vi_additional"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"/>
     <TextView
             android:id="@+id/additional"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"/>
 </LinearLayout>

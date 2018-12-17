@@ -4,6 +4,7 @@ import com.example.lugal.meetingmanagerjava.App
 import com.example.lugal.meetingmanagerjava.database.AppDatabase
 import com.example.lugal.meetingmanagerjava.entities.MeetingEntity
 import com.example.lugal.meetingmanagerjava.entities.VisitorEntity
+import com.example.lugal.meetingmanagerjava.features.meetings.domain.MeetingsRepository
 import com.example.lugal.meetingmanagerjava.network.NetworkInterface
 import dagger.Module
 import dagger.Provides
@@ -15,7 +16,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Module
-class MeetingsRepository : MeetingsRepositoryContract {
+class MeetingsRepositoryImpl : MeetingsRepository {
 
     @Inject
     lateinit var retrofit : Retrofit
@@ -83,7 +84,7 @@ class MeetingsRepository : MeetingsRepositoryContract {
         } }.subscribeOn(Schedulers.io()).subscribe()
     }
 
-    fun loadVisitorsFromNet(meetingId: Int) {
+    private fun loadVisitorsFromNet(meetingId: Int) {
         retrofit.create(NetworkInterface::class.java)
             .getVisitors(meetingId)
             .map { visitorsList->converter.convertToVisitorEntityList(visitorsList, meetingId) }
@@ -92,9 +93,11 @@ class MeetingsRepository : MeetingsRepositoryContract {
             .subscribe()
     }
 
+
+
     @Provides
     @Singleton
     fun provideMeetingsRepository(): MeetingsRepository {
-        return MeetingsRepository()
+        return MeetingsRepositoryImpl()
     }
 }

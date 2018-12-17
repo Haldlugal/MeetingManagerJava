@@ -14,15 +14,15 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name="com.example.lugal.meetingmanagerjava.features.meetings.views.MeetingsListActivity">
+        <activity android:name="com.example.lugal.meetingmanagerjava.features.meetings.presentation.MeetingsListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.lugal.meetingmanagerjava.features.visitors.views.visitorsscreen.VisitorsActivity"/>
-        <activity android:name="com.example.lugal.meetingmanagerjava.features.visitors.views.visitorinfoscreen.VisitorInfoActivity"/>
+        <activity android:name="com.example.lugal.meetingmanagerjava.features.visitors.presentation.visitorsscreen.VisitorsActivity"/>
+        <activity android:name="com.example.lugal.meetingmanagerjava.features.visitors.presentation.visitorinfoscreen.VisitorInfoActivity"/>
     </application>
 
 </manifest>

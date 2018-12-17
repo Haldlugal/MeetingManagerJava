@@ -1,13 +1,10 @@
-package com.example.lugal.meetingmanagerjava.features.visitors.views.visitorsscreen
+package com.example.lugal.meetingmanagerjava.features.visitors.presentation.visitorsscreen
 
-import android.util.Log
 import com.example.lugal.meetingmanagerjava.App
 import com.example.lugal.meetingmanagerjava.Constants
 import com.example.lugal.meetingmanagerjava.entities.VisitorEntity
 import com.example.lugal.meetingmanagerjava.features.BasePresenter
-import com.example.lugal.meetingmanagerjava.features.visitors.domain.VisitorsInteractor
 import com.example.lugal.meetingmanagerjava.network.PostResponse
-import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -15,17 +12,15 @@ import io.reactivex.schedulers.Schedulers
 
 class VisitorsPresenter : BasePresenter<VisitorsListContract>(), VisitorsListPresenterContract{
 
-    private val visitorsInteractor: VisitorsInteractor = App.visitorsInteractorComponent.getVisitorsInteractor()
+    private val visitorsInteractor = App.visitorsInteractorComponent.getVisitorsInteractor()
     private val disposable = CompositeDisposable()
 
-    private val TAG = "VisitorsPresenter"
 
     override fun viewIsReady() {
        deliverVisitors()
     }
     private fun deliverVisitors(){
         val meetingId = mvpView?.returnIntent()?.getIntExtra(Constants.EVENT_ID, -1)?:-1
-        Log.d(TAG, meetingId.toString())
         val source = visitorsInteractor.getVisitors(meetingId)
         disposable.add(source
             .subscribeOn(Schedulers.io())
@@ -36,7 +31,7 @@ class VisitorsPresenter : BasePresenter<VisitorsListContract>(), VisitorsListPre
         mvpView!!.display(visitorList)
     }
     private fun handleError(e: Throwable){
-        mvpView!!.displayError("Error fetching Visitor Data")
+        mvpView!!.displayError(e.toString())
     }
 
     override fun destroy() {
@@ -56,7 +51,7 @@ class VisitorsPresenter : BasePresenter<VisitorsListContract>(), VisitorsListPre
         mvpView!!.showToast(response.size.toString())
     }
     private fun exportError(e:Throwable){
-        mvpView!!.displayError("Error while exporting")
+        mvpView!!.displayError(e.toString())
     }
 
 

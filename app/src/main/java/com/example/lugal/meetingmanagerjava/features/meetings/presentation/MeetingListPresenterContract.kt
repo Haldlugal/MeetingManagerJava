@@ -1,4 +1,4 @@
-package com.example.lugal.meetingmanagerjava.features.meetings.views
+package com.example.lugal.meetingmanagerjava.features.meetings.presentation
 
 import com.example.lugal.meetingmanagerjava.features.MvpPresenterContract
 

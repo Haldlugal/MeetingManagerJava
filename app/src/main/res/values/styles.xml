@@ -8,4 +8,58 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="rowCard">
+        <item name="android:layout_marginBottom">8dp</item>
+    </style>
+    <style name="visitorCardLayout">
+        <item name="android:padding">8dp</item>
+        <item name="android:paddingLeft">16dp</item>
+    </style>
+    <style name="visitorNameLayout">
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+    </style>
+    <style name="visitorName">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_marginRight">8dp</item>
+    </style>
+    <style name="meetingsCardLayout">
+        <item name="android:padding">16dp</item>
+    </style>
+    <style name="meetingImage">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:layout_marginRight">8dp</item>
+    </style>
+    <style name="meetingTitle">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="meetingInfo">
+        <item name="android:layout_marginTop">8dp</item>
+    </style>
+    <style name="searchField">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+    <style name="searchButton">
+        <item name="android:layout_width">32dp</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+    <style name="visitorsLayout">
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+    </style>
+    <style name="visitorInfoName">
+        <item name="android:layout_marginRight">8dp</item>
+    </style>
+    <style name="visitorInfoLayout">
+        <item name="android:padding">8dp</item>
+    </style>
+
+
+
 </resources>

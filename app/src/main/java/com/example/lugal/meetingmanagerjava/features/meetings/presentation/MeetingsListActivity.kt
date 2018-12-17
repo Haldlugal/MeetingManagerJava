@@ -1,21 +1,18 @@
-package com.example.lugal.meetingmanagerjava.features.meetings.views
+package com.example.lugal.meetingmanagerjava.features.meetings.presentation
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.widget.Toast
 import com.example.lugal.meetingmanagerjava.R
-import com.example.lugal.meetingmanagerjava.features.meetings.views.adapters.MeetingsAdapter
+import com.example.lugal.meetingmanagerjava.features.meetings.presentation.adapters.MeetingsAdapter
 import com.example.lugal.meetingmanagerjava.entities.MeetingEntity
-import com.example.lugal.meetingmanagerjava.features.visitors.views.visitorsscreen.VisitorsActivity
+import com.example.lugal.meetingmanagerjava.features.visitors.presentation.visitorsscreen.VisitorsActivity
 
 class MeetingsListActivity : AppCompatActivity(),
     MeetingListContract {
-
+    private lateinit var adapter: MeetingsAdapter
     private lateinit var rvMeetings: RecyclerView
-    private val TAG = "MeetingsListActivity"
     private lateinit var meetingsListPresenter: MeetingsListPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,8 +20,8 @@ class MeetingsListActivity : AppCompatActivity(),
         setContentView(R.layout.activity_meetings)
         rvMeetings = findViewById(R.id.rvMeetings)
         setPresenter()
-        meetingsListPresenter.onCreate()
-        setupViews()
+        adapter = MeetingsAdapter(meetingsListPresenter)
+        rvMeetings.adapter = adapter
         meetingsListPresenter.viewIsReady()
     }
 
@@ -42,33 +39,20 @@ class MeetingsListActivity : AppCompatActivity(),
         meetingsListPresenter.attachView(this)
     }
 
-    private fun setupViews() {
-        rvMeetings.layoutManager = LinearLayoutManager(this)
-    }
-
-    fun showToast(str: String) {
+    private fun showToast(str: String) {
         Toast.makeText(this@MeetingsListActivity, str, Toast.LENGTH_LONG).show()
     }
 
     override fun display(meetingResponse: List<MeetingEntity>) {
-        if (meetingResponse != null) {
-            for (i in meetingResponse.indices) {
-                Log.d(TAG, meetingResponse[i].title)
-            }
-
-            rvMeetings.adapter = MeetingsAdapter(
-                meetingResponse
-            ) {
-                showToast("${it.title} Clicked")
-                VisitorsActivity.startVisitorsActivityIntent(this, it.id)
-            }
-        } else {
-            Log.d(TAG, "Meetings response null")
-        }
+        adapter.setMeetingsList(meetingResponse)
     }
 
-    override fun displayError(error: String) {
-        showToast(error)
+    override fun startVisitorsActivity(eventId:Int){
+        VisitorsActivity.startVisitorsActivityIntent(this, eventId)
+    }
+
+    override fun displayError(errorText: String) {
+        showToast(errorText)
     }
 
 }

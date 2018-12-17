@@ -1,38 +1,30 @@
-package com.example.lugal.meetingmanagerjava.features.visitors.views.visitorsscreen
+package com.example.lugal.meetingmanagerjava.features.visitors.presentation.visitorsscreen
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import com.example.lugal.meetingmanagerjava.Constants
 import com.example.lugal.meetingmanagerjava.R
-import com.example.lugal.meetingmanagerjava.features.visitors.views.adapters.VisitorsAdapter
+import com.example.lugal.meetingmanagerjava.features.visitors.presentation.adapters.VisitorsAdapter
 import com.example.lugal.meetingmanagerjava.entities.VisitorEntity
-import com.example.lugal.meetingmanagerjava.features.visitors.views.visitorinfoscreen.VisitorInfoActivity
+import com.example.lugal.meetingmanagerjava.features.visitors.presentation.visitorinfoscreen.VisitorInfoActivity
 import kotlinx.android.synthetic.main.activity_visitors.*
-import android.content.DialogInterface
 import android.support.v7.app.AlertDialog
 
 internal class VisitorsActivity : AppCompatActivity(), VisitorsListContract {
     private lateinit var adapter: VisitorsAdapter
     private lateinit var visitorsPresenter: VisitorsPresenter
-    private lateinit var linearLayoutManager: LinearLayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_visitors)
         setSupportActionBar(findViewById(R.id.my_toolbar))
-
         setPresenter()
-        setupViews()
-        adapter = VisitorsAdapter(
-            visitorsPresenter
-        )
+        adapter = VisitorsAdapter(visitorsPresenter)
         rvVisitors.adapter = adapter
         visitorsPresenter.viewIsReady()
         setSearchButtonListener()
@@ -61,11 +53,11 @@ internal class VisitorsActivity : AppCompatActivity(), VisitorsListContract {
         R.id.meeting_stats_button -> {
             showToast(adapter.getVisitorsMetCount().toString())
             val builder = AlertDialog.Builder(this)
-            builder.setTitle("Статистика встречи")
-                .setMessage("Посетителей: " + adapter.getVisitorsMetCount().toString() + " из " + adapter.itemCount.toString())
+            builder.setTitle(getString(R.string.meeting_stat))
+                .setMessage(getString(R.string.visitors) + adapter.getVisitorsMetCount().toString() + " " + getString(R.string.from) + " " + adapter.itemCount.toString())
                 .setCancelable(false)
-                .setNegativeButton("ОК",
-                    DialogInterface.OnClickListener { dialog, id -> dialog.cancel() })
+                .setNegativeButton(getString(R.string.ok)
+                ) { dialog, _ -> dialog.cancel() }
             val alert = builder.create()
             alert.show()
             true
@@ -78,7 +70,6 @@ internal class VisitorsActivity : AppCompatActivity(), VisitorsListContract {
 
     private fun setSearchButtonListener(){
         search_button.setOnClickListener {
-            Log.d("Click!" , search_field.text.toString())
             visitorsPresenter.searchClicked(search_field.text.toString())
         }
     }
@@ -87,21 +78,16 @@ internal class VisitorsActivity : AppCompatActivity(), VisitorsListContract {
         visitorsPresenter.attachView(this)
     }
 
-    private fun setupViews() {
-        linearLayoutManager = LinearLayoutManager(this)
-        rvVisitors.layoutManager = linearLayoutManager
-    }
-
-    override fun showToast(str: String) {
-        Toast.makeText(this, str, Toast.LENGTH_SHORT).show()
+    override fun showToast(string: String) {
+        Toast.makeText(this, string, Toast.LENGTH_SHORT).show()
     }
 
     override fun display(visitorsResponse: List<VisitorEntity>) {
         adapter.setVisitorsList(visitorsResponse)
     }
 
-    override fun displayError(error: String) {
-        showToast(error)
+    override fun displayError(errorText: String) {
+        showToast(errorText)
     }
     override fun returnIntent(): Intent {
         return this.intent

@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Meeting Manager</string>
+    <string name="user_met">+</string>
+    <string name="user_not_met">-</string>
+    <string name="vi_company">Компания</string>
+    <string name="vi_city">Город</string>
+    <string name="vi_phone">Телефон</string>
+    <string name="vi_additional">Дополнительная информация</string>
+    <string name="meeting_stat">Статистика встречи</string>
+    <string name="visitors">Посетителей:</string>
+    <string name="from">из</string>
+    <string name="ok">ОК</string>
+    <string name="imageDescriptionText">here lies image of meeting</string>
 </resources>

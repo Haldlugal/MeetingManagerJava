@@ -1,4 +1,4 @@
-package com.example.lugal.meetingmanagerjava.features.visitors.views.adapters
+package com.example.lugal.meetingmanagerjava.features.visitors.presentation.adapters
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import com.example.lugal.meetingmanagerjava.R
 import com.example.lugal.meetingmanagerjava.entities.VisitorEntity
 import kotlinx.android.synthetic.main.row_visitors.view.*
-import com.example.lugal.meetingmanagerjava.features.visitors.views.visitorsscreen.VisitorsPresenter
+import com.example.lugal.meetingmanagerjava.features.visitors.presentation.visitorsscreen.VisitorsPresenter
 
 
 class VisitorsAdapter (private val visitorsPresenter: VisitorsPresenter ) :
