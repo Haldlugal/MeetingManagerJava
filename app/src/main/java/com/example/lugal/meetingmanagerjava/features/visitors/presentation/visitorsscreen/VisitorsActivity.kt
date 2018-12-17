@@ -51,7 +51,6 @@ internal class VisitorsActivity : AppCompatActivity(), VisitorsListContract {
         }
 
         R.id.meeting_stats_button -> {
-            showToast(adapter.getVisitorsMetCount().toString())
             val builder = AlertDialog.Builder(this)
             builder.setTitle(getString(R.string.meeting_stat))
                 .setMessage(getString(R.string.visitors) + adapter.getVisitorsMetCount().toString() + " " + getString(R.string.from) + " " + adapter.itemCount.toString())
